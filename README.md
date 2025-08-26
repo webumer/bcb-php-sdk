@@ -56,23 +56,74 @@ $payment = $client->payments()->authorise([
 
 // Parse webhook events
 $webhook = $client->webhooks()->parseVirtualAccountEvent($payload);
+
+// Get virtual account details
+$account = $client->viban()->get($accountId, $iban);
+
+// Get virtual account balance
+$balance = $client->viban()->getBalance($accountId, $iban);
+
+// Get transaction history
+$transactions = $client->viban()->getTransactions($accountId, $iban, [
+    'from' => '2024-01-01',
+    'to' => '2024-12-31'
+]);
+
+// Create beneficiary
+$beneficiary = $client->beneficiaries()->create([
+    'name' => 'John Doe',
+    'account_number' => '12345678',
+    'sort_code' => '123456',
+    'currency' => 'GBP'
+]);
+
+// List payments
+$payments = $client->payments()->list(['status' => 'completed']);
+
+// Cancel payment
+$result = $client->payments()->cancel($paymentId);
 ```
 
 ## API Coverage
 
 ### Payments
 - `authorise()` - Initiate payment
-- `get()` - Get payment status
+- `get()` - Get payment details
+- `list()` - List payments with filters
+- `cancel()` - Cancel payment
+- `getStatus()` - Get payment status
 
 ### Beneficiaries  
 - `list()` - List beneficiaries
+- `create()` - Create new beneficiary
+- `get()` - Get beneficiary details
+- `update()` - Update beneficiary
+- `delete()` - Delete beneficiary
+- `validate()` - Validate beneficiary details
 
 ### Virtual IBANs
 - `create()` - Create virtual account
+- `get()` - Get single virtual account details
+- `getAll()` - List all virtual accounts
 - `updateOwnerSwiftDetails()` - Update IBAN/BIC
 - `updateOwnerAccountDetails()` - Update account/sort code
-- `getAll()` - List all virtual accounts
+- `updateStatus()` - Enable/disable virtual account
+- `delete()` - Close/delete virtual account
+- `getTransactions()` - Get transaction history
+- `getBalance()` - Get account balance
+- `getStatements()` - Get account statements
+- `getLimits()` - Get transaction limits
+- `getWebhooks()` - Get webhook configurations
+- `updateWebhooks()` - Configure webhooks
+- `createBeneficiary()` - Create beneficiary from vIBAN
 - `initiatePayment()` - Internal transfer
+
+### Accounts
+- `get()` - Get account details
+- `list()` - List all accounts
+- `balance()` - Get account balance
+- `getTransactions()` - Get account transactions
+- `getStatements()` - Get account statements
 
 ### Webhooks
 - `parseVirtualAccountEvent()` - Parse account creation/failure
