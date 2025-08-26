@@ -1,14 +1,14 @@
 <?php
 
-namespace Kp\Bcb;
+namespace Webumer\Bcb;
 
 use GuzzleHttp\Client as Guzzle;
-use Kp\Bcb\Auth\OAuthClient;
-use Kp\Bcb\Resources\Payments;
-use Kp\Bcb\Resources\Beneficiaries;
-use Kp\Bcb\Resources\Accounts;
-use Kp\Bcb\Resources\Viban;
-use Kp\Bcb\Resources\Webhooks;
+use Webumer\Bcb\Auth\OAuthClient;
+use Webumer\Bcb\Resources\Payments;
+use Webumer\Bcb\Resources\Beneficiaries;
+use Webumer\Bcb\Resources\Accounts;
+use Webumer\Bcb\Resources\Viban;
+use Webumer\Bcb\Resources\Webhooks;
 
 final class BcbClient
 {

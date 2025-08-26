@@ -1,6 +1,6 @@
 <?php
 
-namespace Kp\Bcb\Resources;
+namespace Webumer\Bcb\Resources;
 
 final class Webhooks
 {

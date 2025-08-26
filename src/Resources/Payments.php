@@ -1,9 +1,9 @@
 <?php
 
-namespace Kp\Bcb\Resources;
+namespace Webumer\Bcb\Resources;
 
 use GuzzleHttp\Client as Guzzle;
-use Kp\Bcb\Auth\OAuthClient;
+use Webumer\Bcb\Auth\OAuthClient;
 
 final class Payments
 {

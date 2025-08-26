@@ -1,6 +1,6 @@
 <?php
 
-namespace Kp\Bcb\Auth;
+namespace Webumer\Bcb\Auth;
 
 use GuzzleHttp\Client as Guzzle;
 
