@@ -22,6 +22,29 @@ composer require webumer/bcb-php-sdk
 
 ## Quick Start
 
+### Using Environment Configuration (Recommended)
+
+```php
+use Webumer\Bcb\BcbClient;
+use Webumer\Bcb\BcbEnvironment;
+
+// For UAT/Sandbox environment
+$client = BcbClient::forEnvironment(
+    environment: BcbEnvironment::UAT,
+    clientId: 'your_client_id',
+    clientSecret: 'your_client_secret'
+);
+
+// For Production environment
+$client = BcbClient::forEnvironment(
+    environment: BcbEnvironment::PRODUCTION,
+    clientId: 'your_client_id',
+    clientSecret: 'your_client_secret'
+);
+```
+
+### Manual Configuration
+
 ```php
 use Webumer\Bcb\BcbClient;
 
@@ -128,6 +151,44 @@ $result = $client->payments()->cancel($paymentId);
 ### Webhooks
 - `parseVirtualAccountEvent()` - Parse account creation/failure
 - `parseTransactionsEvent()` - Parse transaction batches
+
+## Environments
+
+The SDK supports two environments:
+
+### UAT/Sandbox Environment
+- **Auth URL**: `https://auth.uat.bcb.group/oauth/token`
+- **API URL**: `https://api.uat.bcb.group`
+- **Client URL**: `https://client-api.uat.bcb.group`
+- **API Version**: `v3` (for payments, beneficiaries, accounts)
+- **Client API Version**: `v1` (for virtual IBANs)
+- **Use for**: Testing and development
+
+### Production Environment
+- **Auth URL**: `https://auth.bcb.group/oauth/token`
+- **API URL**: `https://api.bcb.group`
+- **Client URL**: `https://client-api.bcb.group`
+- **API Version**: `v3` (for payments, beneficiaries, accounts)
+- **Client API Version**: `v1` (for virtual IBANs)
+- **Use for**: Live production applications
+
+### Environment Usage
+
+```php
+// UAT Environment
+$uatClient = BcbClient::forEnvironment(
+    environment: BcbEnvironment::UAT,
+    clientId: 'your_uat_client_id',
+    clientSecret: 'your_uat_client_secret'
+);
+
+// Production Environment
+$prodClient = BcbClient::forEnvironment(
+    environment: BcbEnvironment::PRODUCTION,
+    clientId: 'your_prod_client_id',
+    clientSecret: 'your_prod_client_secret'
+);
+```
 
 ## Requirements
 
