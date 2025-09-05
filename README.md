@@ -136,10 +136,10 @@ $result = $client->payments()->cancel($paymentId);
 - `getBalance()` - Get account balance
 - `getStatements()` - Get account statements
 - `getLimits()` - Get transaction limits
-- `getWebhooks()` - Get webhook configurations
-- `updateWebhooks()` - Configure webhooks
 - `createBeneficiary()` - Create beneficiary from vIBAN
 - `initiatePayment()` - Internal transfer
+
+**Note**: Webhook configuration is not available at virtual IBAN level in BCB API. Webhooks must be configured through BCB support.
 
 ### Accounts
 - `get()` - Get account details
