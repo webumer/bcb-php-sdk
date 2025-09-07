@@ -99,4 +99,49 @@ final class Beneficiaries
         ]);
         return json_decode((string)$res->getBody(), true) ?: [];
     }
+
+    /**
+     * List BLINC beneficiaries
+     */
+    public function listBlinc(array $query = []): array
+    {
+        $res = $this->http->get('/v3/blinc-beneficiaries', [
+            'headers' => [
+                'Authorization' => 'Bearer ' . $this->oauth->bearer(),
+                'Accept' => 'application/json',
+            ],
+            'query' => $query
+        ]);
+        return json_decode((string)$res->getBody(), true) ?: [];
+    }
+
+    /**
+     * Retrieve BLINC account information by BLINC ID
+     */
+    public function getBlincAccount(string $blincId): array
+    {
+        $res = $this->http->get("/v3/blinc-beneficiaries/{$blincId}", [
+            'headers' => [
+                'Authorization' => 'Bearer ' . $this->oauth->bearer(),
+                'Accept' => 'application/json',
+            ],
+        ]);
+        return json_decode((string)$res->getBody(), true) ?: [];
+    }
+
+    /**
+     * Create BLINC beneficiary
+     */
+    public function createBlinc(array $payload): array
+    {
+        $res = $this->http->post('/v3/blinc-beneficiaries', [
+            'headers' => [
+                'Authorization' => 'Bearer ' . $this->oauth->bearer(),
+                'Accept' => 'application/json',
+                'Content-Type' => 'application/json',
+            ],
+            'json' => $payload,
+        ]);
+        return json_decode((string)$res->getBody(), true) ?: [];
+    }
 }

@@ -22,11 +22,16 @@ composer require webumer/bcb-php-sdk
 
 ## Changelog
 
+### v1.2.5 (2025-01-XX)
+- **NEW**: Added BLINC beneficiaries support (`listBlinc()`, `getBlincAccount()`, `createBlinc()`)
+- **ENHANCED**: Beneficiaries resource now supports both regular and BLINC beneficiaries
+- **NOTE**: BLINC beneficiaries are a specific type of beneficiary with additional functionality
+
 ### v1.2.4 (2025-01-XX)
 - **NEW**: Added `close()` method for virtual account closure using POST endpoint
-- **FIXED**: Virtual account closure now works via `/v1/accounts/{accountId}/virtual/{iban}/close` endpoint
+- **NOTE**: Virtual account closure may be processed asynchronously
 - **UPDATED**: `delete()` method marked as legacy (may not work)
-- **NOTE**: Use `close()` method instead of `delete()` for virtual account closure
+- **INFO**: Account closure requests may not immediately remove accounts from the list - webhook notifications may confirm closure on production
 
 ### v1.2.3 (2025-01-XX)
 - **Fixed**: Removed non-existent webhook management endpoints (`getWebhooks`, `updateWebhooks`)
