@@ -147,7 +147,23 @@ final class Viban
     }
 
     /**
-     * Delete/close virtual account
+     * Close virtual account (recommended method)
+     */
+    public function close(string $accountId, string $iban): array
+    {
+        $res = $this->http->post($this->clientBaseUrl . "/v1/accounts/{$accountId}/virtual/{$iban}/close", [
+            'headers' => [
+                'Authorization' => 'Bearer ' . $this->oauth->bearer(),
+                'Accept' => 'application/json',
+                'Content-Type' => 'application/json',
+            ],
+            'json' => [],
+        ]);
+        return json_decode((string)$res->getBody(), true) ?: [];
+    }
+
+    /**
+     * Delete/close virtual account (legacy method - may not work)
      */
     public function delete(string $accountId, string $iban): array
     {

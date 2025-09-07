@@ -22,10 +22,18 @@ composer require webumer/bcb-php-sdk
 
 ## Changelog
 
+### v1.2.4 (2025-01-XX)
+- **NEW**: Added `close()` method for virtual account closure using POST endpoint
+- **FIXED**: Virtual account closure now works via `/v1/accounts/{accountId}/virtual/{iban}/close` endpoint
+- **UPDATED**: `delete()` method marked as legacy (may not work)
+- **NOTE**: Use `close()` method instead of `delete()` for virtual account closure
+
 ### v1.2.3 (2025-01-XX)
 - **Fixed**: Removed non-existent webhook management endpoints (`getWebhooks`, `updateWebhooks`)
+- **LIMITATION**: Virtual account deletion (`delete()` method) returns 404 errors - not supported via API
 - **Updated**: Documentation to reflect actual BCB API capabilities
 - **Note**: BCB API does not provide webhook management endpoints - configuration must be done through BCB support team
+- **Note**: BCB API does not support virtual account deletion - closure must be requested through BCB support team
 
 ### v1.2.1
 - Initial stable release with core BCB API functionality
