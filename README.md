@@ -20,6 +20,16 @@ Unofficial PHP SDK for BCB Group Client API. Provides easy integration for payme
 composer require webumer/bcb-php-sdk
 ```
 
+## Changelog
+
+### v1.2.2 (2025-01-XX)
+- **Fixed**: Removed non-existent webhook management endpoints (`getWebhooks`, `updateWebhooks`)
+- **Updated**: Documentation to reflect actual BCB API capabilities
+- **Note**: BCB API does not provide webhook management endpoints - configuration must be done through BCB support team
+
+### v1.2.1
+- Initial stable release with core BCB API functionality
+
 ## Quick Start
 
 ### Using Environment Configuration (Recommended)

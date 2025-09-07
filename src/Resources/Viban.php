@@ -191,35 +191,9 @@ final class Viban
         return json_decode((string)$res->getBody(), true) ?: [];
     }
 
-    /**
-     * Get virtual account webhooks
-     */
-    public function getWebhooks(string $accountId, string $iban): array
-    {
-        $res = $this->http->get($this->clientBaseUrl . "/v1/accounts/{$accountId}/virtual/{$iban}/webhooks", [
-            'headers' => [
-                'Authorization' => 'Bearer ' . $this->oauth->bearer(),
-                'Accept' => 'application/json',
-            ],
-        ]);
-        return json_decode((string)$res->getBody(), true) ?: [];
-    }
-
-    /**
-     * Update virtual account webhooks
-     */
-    public function updateWebhooks(string $accountId, string $iban, array $payload): array
-    {
-        $res = $this->http->put($this->clientBaseUrl . "/v1/accounts/{$accountId}/virtual/{$iban}/webhooks", [
-            'headers' => [
-                'Authorization' => 'Bearer ' . $this->oauth->bearer(),
-                'Accept' => 'application/json',
-                'Content-Type' => 'application/json',
-            ],
-            'json' => $payload,
-        ]);
-        return json_decode((string)$res->getBody(), true) ?: [];
-    }
+    // Note: BCB API does not currently provide webhook management endpoints
+    // Webhook configuration must be done through BCB support team
+    // These methods have been removed as they don't exist in the actual BCB API
 
     /**
      * Get virtual account limits
