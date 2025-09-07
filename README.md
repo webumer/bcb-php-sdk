@@ -22,7 +22,7 @@ composer require webumer/bcb-php-sdk
 
 ## Changelog
 
-### v1.2.2 (2025-01-XX)
+### v1.2.3 (2025-01-XX)
 - **Fixed**: Removed non-existent webhook management endpoints (`getWebhooks`, `updateWebhooks`)
 - **Updated**: Documentation to reflect actual BCB API capabilities
 - **Note**: BCB API does not provide webhook management endpoints - configuration must be done through BCB support team

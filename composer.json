@@ -1,7 +1,7 @@
 {
   "name": "webumer/bcb-php-sdk",
   "description": "Unofficial PHP SDK for BCB Group Client API (payments, beneficiaries, virtual IBANs, webhooks).",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "type": "library",
   "license": "MIT",
   "keywords": [
